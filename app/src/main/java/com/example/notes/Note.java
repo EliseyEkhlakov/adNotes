@@ -1,6 +1,12 @@
 package com.example.notes;
 
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "notes")
 public class Note {
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private String title;
     private String description;
@@ -14,6 +20,16 @@ public class Note {
         this.dayOfweek = dayOfweek;
         this.prority = prority;
     }
+    //
+    @Ignore
+    public Note(String title, String description, int dayOfweek, int prority) {
+        this.title = title;
+        this.description = description;
+        this.dayOfweek = dayOfweek;
+        this.prority = prority;
+    }
+
+    //
     public int getId() {
         return id;
     }
@@ -51,5 +67,25 @@ public class Note {
             default:
                 return "Воскресенье";
         }
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setDayOfweek(int dayOfweek) {
+        this.dayOfweek = dayOfweek;
+    }
+
+    public void setPrority(int prority) {
+        this.prority = prority;
     }
 }
